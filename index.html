@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كافيه ملاذ - قهوة وراحة</title>
+    <!-- خط تجوال الفاخر -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #17100B;
+            --wood-card: linear-gradient(145deg, #2D1E13, #1F140C);
+            --accent-gold: #D4B07B;
+            --light-cream: #FDFBF7;
+            --shadow-3d: 0 10px 25px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+            --btn-3d: 0 6px 0px #1A1008, 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(#312015 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+            color: var(--light-cream);
+            padding-bottom: 40px;
+        }
+
+        /* الهيدر والشعار */
+        header {
+            text-align: center;
+            padding: 35px 20px 25px 20px;
+            background: linear-gradient(180deg, #26170E 0%, #17100B 100%);
+            border-bottom: 4px solid var(--accent-gold);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+        }
+
+        .logo-container {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 15px auto;
+            border-radius: 50%;
+            background: #2D1E13;
+            border: 3px solid var(--accent-gold);
+            box-shadow: var(--shadow-3d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* اللوجو المرسوم بتقنية SVG لضمان الظهور بدون روابط خارجية */
+        .logo-container svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .welcome-title {
+            font-size: 1.3rem;
+            color: var(--accent-gold);
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .slogan-text {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+
+        /* أزرار 3D سريعة (اتصال، واتساب، لوكيشن) */
+        .quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-3d {
+            flex: 1;
+            min-width: 100px;
+            max-width: 130px;
+            background: linear-gradient(145deg, #4A3324, #2D1E13);
+            color: var(--light-cream);
+            text-decoration: none;
+            text-align: center;
+            padding: 12px 8px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 1px solid var(--accent-gold);
+            box-shadow: var(--btn-3d);
+            transition: all 0.1s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-3d span {
+            font-size: 1.1rem;
+        }
+
+        .btn-3d:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0px #1A1008, 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* الحاوية الرئيسية */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .section-header {
+            font-size: 1.35rem;
+            color: var(--accent-gold);
+            margin: 35px 0 15px 0;
+            padding-right: 12px;
+            border-right: 5px solid var(--accent-gold);
+            font-weight: 900;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+        }
+
+        .sub-header {
+            font-size: 1.1rem;
+            color: #d1b899;
+            margin: 20px 0 10px 0;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* المربعات الشبكية 4D (Grid Cards) */
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+            gap: 15px;
+        }
+
+        .card-4d {
+            background: var(--wood-card);
+            border-radius: 16px;
+            padding: 15px;
+            border: 1px solid rgba(212, 176, 123, 0.25);
+            box-shadow: var(--shadow-3d);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-4d.featured {
+            border: 2px solid var(--accent-gold);
+            background: linear-gradient(145deg, #3d2617, #24170e);
+        }
+
+        .badge-star {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--accent-gold);
+            color: #17100B;
+            font-size: 0.65rem;
+            font-weight: 900;
+            padding: 3px 10px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .item-name {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--light-cream);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .item-desc {
+            font-size: 0.75rem;
+            color: #b5a494;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .price-badge {
+            background: linear-gradient(145deg, #D4B07B, #A68352);
+            color: #17100B;
+            font-weight: 900;
+            font-size: 1.05rem;
+            padding: 6px 12px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 3px 6px rgba(0,0,0,0.3);
+        }
+
+        /* الفوتر والتذييل */
+        footer {
+            margin-top: 45px;
+            background: #110b07;
+            padding: 30px 20px;
+            border-top: 3px solid var(--accent-gold);
+            text-align: center;
+            box-shadow: inset 0 10px 20px rgba(0,0,0,0.7);
+        }
+
+        .footer-title {
+            color: var(--accent-gold);
+            font-weight: 900;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .footer-address {
+            font-size: 0.9rem;
+            color: #d1c2b5;
+            line-height: 1.7;
+            max-width: 450px;
+            margin: 0 auto 15px auto;
+        }
+
+        .footer-phone {
+            display: inline-block;
+            direction: ltr;
+            color: var(--accent-gold);
+            font-weight: 900;
+            font-size: 1.25rem;
+            margin-top: 5px;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر واللوجو داخل الدائرة -->
+    <header>
+        <div class="logo-container">
+            <!-- تصميم اللوجو الخشبي الأصلي داخل الدائرة -->
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100%" height="100%" fill="#2D1E13"/>
+                <path d="M 50 80 Q 50 120 100 120 Q 150 120 150 80 Z" fill="none" stroke="#D4B07B" stroke-width="6"/>
+                <path d="M 150 85 C 165 85 165 105 150 105" fill="none" stroke="#D4B07B" stroke-width="5"/>
+                <path d="M 80 70 Q 75 55 85 40" fill="none" stroke="#D4B07B" stroke-width="4" stroke-linecap="round"/>
+                <path d="M 100 70 Q 95 50 105 35" fill="none" stroke="#D4B07B" stroke-width="4" stroke-linecap="round"/>
+                <path d="M 120 70 Q 115 55 125 40" fill="none" stroke="#D4B07B" stroke-width="4" stroke-linecap="round"/>
+                <text x="100" y="155" text-anchor="middle" fill="#D4B07B" font-size="28" font-weight="900" font-family="'Tajawal', sans-serif">مَلاذْ</text>
+                <text x="100" y="178" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="500" font-family="'Tajawal', sans-serif">قهوة وراحة</text>
+            </svg>
+        </div>
+        <div class="welcome-title">☕ أهلاً بكم في كافيه ملاذ</div>
+        <div class="slogan-text">قهوة وراحة - عنوان الأصالة والفخامة</div>
+    </header>
+
+    <!-- أزرار تفاعلية 3D تم تصحيح رابط الخرائط فيها لتجنب أي خطأ -->
+    <div class="quick-actions">
+        <a href="tel:01015400275" class="btn-3d">
+            <span>📞</span> اتصال
+        </a>
+        <a href="https://wa.me/201015400275" class="btn-3d" style="border-color:#4CAF50;">
+            <span>💬</span> واتساب
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=30.850139799999997,32.305043" target="_blank" class="btn-3d" style="border-color:#3b82f6;">
+            <span>📍</span> الموقع
+        </a>
+    </div>
+
+    <div class="container">
+
+        <!-- القسم الأول: مبيعات البن والمشروبات الجافة -->
+        <div class="section-header">⚖️ مبيعات البن والمشروبات الجافة (¼ كجم)</div>
+        <div class="grid-menu">
+
+            <div class="card-4d">
+                <div class="item-name">بن ملاذ سادة</div>
+                <div class="item-desc">الخيار الكلاسيكي اليومي</div>
+                <div class="price-badge">150 ج</div>
+            </div>
+
+            <div class="card-4d featured">
+                <div class="badge-star">⭐ الأكثر مبيعاً</div>
+                <div class="item-name">بن ملاذ محوج</div>
+                <div class="item-desc">خلطة حبّان خاصة مميزة</div>
+                <div class="price-badge">160 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">ملاذ اسبيشيال (فاتح)</div>
+                <div class="item-desc">تحميص هادئ ونكهة غنية</div>
+                <div class="price-badge">175 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">ملاذ اسبيشيال (وسط)</div>
+                <div class="item-desc">توازن مثالي بين الحموضة والمرارة</div>
+                <div class="price-badge">175 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">بن برازيلي</div>
+                <div class="item-desc">نكهة المكسرات والشوكولاتة الفاخرة</div>
+                <div class="price-badge">200 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">بن كولومبي</div>
+                <div class="item-desc">إيحاء عالي الجودة وحموضة متوازنة</div>
+                <div class="price-badge">235 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">توليفة ملاذ دي كريما</div>
+                <div class="item-desc">مثالية لإسبريسو غني بالكريمة</div>
+                <div class="price-badge">170 ج</div>
+            </div>
+
+            <div class="card-4d featured">
+                <div class="badge-star">🔥 توقيع المكان</div>
+                <div class="item-name">توليفة ملاذ مخصوص</div>
+                <div class="item-desc">خلطة حصرية لمحبي القهوة الثقيلة</div>
+                <div class="price-badge">190 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">قهوة بندق</div>
+                <div class="item-desc">نكهة غنية ومميزة</div>
+                <div class="price-badge">150 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">قهوة فرنساوي</div>
+                <div class="item-desc">قوام ناعم ومذاق متوازن</div>
+                <div class="price-badge">150 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">هوت شوكليت (بودرة)</div>
+                <div class="item-desc">شوكولاتة فاخرة للتحضير المنزلي</div>
+                <div class="price-badge">150 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">قهوة كراميل</div>
+                <div class="item-desc">لمسة حلاوة ولذع القهوة</div>
+                <div class="price-badge">150 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">كوفي ميكس</div>
+                <div class="item-desc">سريع التحضير</div>
+                <div class="price-badge">125 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">قهوة عربي</div>
+                <div class="item-desc">أصالة بالهيل والمذاق الخليجي</div>
+                <div class="price-badge">250 ج</div>
+            </div>
+
+        </div>
+
+        <!-- القسم الثاني: المشروبات الجاهزة -->
+        <div class="section-header">☕ المشروبات الجاهزة (Hot & Cold Drinks)</div>
+
+        <!-- الساخنة -->
+        <div class="sub-header">🔥 المشروبات الساخنة</div>
+        <div class="grid-menu">
+            <div class="card-4d featured">
+                <div class="badge-star">⭐ توقيع المكان</div>
+                <div class="item-name">فنجان ملاذ</div>
+                <div class="item-desc">إسبريسو غني ومميز</div>
+                <div class="price-badge">20 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">مشروبات ساخنة مميزة</div>
+                <div class="item-desc">هوت شوكليت، قهوة بندق، فرنساوي، كراميل، كوفي ميكس، كابتشينو</div>
+                <div class="price-badge">30 ج</div>
+            </div>
+        </div>
+
+        <!-- الباردة -->
+        <div class="sub-header" style="margin-top: 25px;">❄️ المشروبات الباردة والترطيب</div>
+        <div class="grid-menu">
+            <div class="card-4d">
+                <div class="item-name">مشروبات غازية وترطيب</div>
+                <div class="item-desc">كانز / راني / تويست / فروت كولا</div>
+                <div class="price-badge">25 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">آيس كوفي (Ice Coffee)</div>
+                <div class="item-desc">منعش ومثالي للصيف</div>
+                <div class="price-badge">45 ج</div>
+            </div>
+
+            <div class="card-4d">
+                <div class="item-name">زجاجة مياه</div>
+                <div class="item-desc">مياه نقية ومنعشة</div>
+                <div class="price-badge">10 ج</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- الفوتر والعنوان وتفاصيل الاتصال -->
+    <footer>
+        <div class="footer-title">📍 تشرفنا زيارتكم دائماً في مقرنا</div>
+        <div class="footer-address">
+            شارع المعاهدة أمام كشري الطيب بجوار مطعم أبو تحسين السوري
+        </div>
+        <a href="tel:01015400275" class="footer-phone">📱 0101 540 0275</a>
+    </footer>
+
+</body>
+</html>
